@@ -1,6 +1,6 @@
 == Welcome to the Sandwich App
 
-View the app in production at: <a href="http://lit-mesa-2117.herokuapp.com">App Deployed on Heroku</a> 
+View the app in production at: http://lit-mesa-2117.herokuapp.com
 
 == Getting Started
 
