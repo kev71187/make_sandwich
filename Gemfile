@@ -7,7 +7,7 @@ gem 'rails', '3.2.12'
 
 
 
-group :development do
+group :development, :test do
 	gem 'sqlite3'
 	gem 'better_errors'
 	gem 'binding_of_caller'
