@@ -8,10 +8,10 @@ MakeSandwich::Application.routes.draw do
   resources :users, :only => [:new, :create]
 
 
-  resources :ingredients
+  # resources :ingredients
 
 
-  resources :categories
+  # resources :categories
 
 
   resources :user_sessions
