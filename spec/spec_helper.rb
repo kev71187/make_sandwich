@@ -3,12 +3,15 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'authlogic/test_case'
+include Authlogic::TestCase
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
   # ## Mock Framework
   #
@@ -36,4 +39,19 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+end
+
+# def login(factory = :user)
+#   @current_user = FactoryGirl.create(factory)
+#   @current_user_session = mock_model(UserSession, {:record => @current_user})
+#   UserSession.any_instance.stubs(:find).returns(current_user_session)
+#   controller.stubs(:current_user).returns(current_user)
+# end
+
+def login(user)
+  activate_authlogic
+  visit login_path
+  fill_in "Email",    with: user.email
+  fill_in "Password", with: user.password
+  click_button "Sign In"
 end

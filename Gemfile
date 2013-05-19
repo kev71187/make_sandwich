@@ -1,16 +1,22 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-
+gem 'bcrypt-ruby', '3.0.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
+group :test do
+	gem "shoulda"
+  gem "shoulda-matchers"
+end
 
 group :development, :test do
 	gem 'sqlite3'
+	gem 'rspec-rails'
 	gem 'better_errors'
 	gem 'binding_of_caller'
+	gem 'factory_girl_rails', '4.1.0'
+	gem "capybara" , '1.1.2'
 end
 group :production do
   gem 'pg'
@@ -29,6 +35,7 @@ end
 
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'authlogic'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
