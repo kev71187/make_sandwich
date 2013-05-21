@@ -1,8 +1,7 @@
-The following order has been requested by: <%= @user.email %>
+Please sir,
 
-Order Contents: 
-<% @order.ingredients.each do |ingredient|%> 
-	<%= "#{ingredient.name} " %>
-<% end %>
+Could you make <%= @user.email %> a sandwich?
+They want a <%= @order.sandwich.title %> sandwich please!
+Thank you!
 
-Quote of the day: <%= @random_quote.html_safe %>
+Quote of the day: <%= @random_quote %>

@@ -1,25 +1,23 @@
 MakeSandwich::Application.routes.draw do
-  #resources :contents
 
-
-  resources :orders, :only => [:index, :show, :new, :create]
-
-
-  resources :users, :only => [:new, :create]
-
-
-  # resources :ingredients
-
-
-  # resources :categories
-
-
-  resources :user_sessions
 
   get "login" => "user_sessions#new"
   get "logout" => "user_sessions#destroy"
   get "register" => "users#new"
+  
+  resources :sandwiches
 
+  #get "orders/success" => "orders#success"
+  resources :orders do
+    collection do
+      get "success"
+      get "error"
+    end
+  end
+
+  resources :users, :only => [:new, :create]
+
+  resources :user_sessions
   root :to => 'index#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
