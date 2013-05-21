@@ -1,1 +1,8 @@
-New Email
+The following order has been requested by: <%= @user.email %>
+
+Order Contents: 
+<% @order.ingredients.each do |ingredient|%> 
+	<%= "#{ingredient.name} " %>
+<% end %>
+
+Quote of the day: <%= @random_quote.html_safe %>
