@@ -1,4 +1,4 @@
-class OrderMaller < ActionMailer::Base
+class OrderMailer < ActionMailer::Base
   default from: "kev71187@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml

@@ -19,7 +19,17 @@ MakeSandwich::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
-
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "railscasts.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: 'kevinwoods.makesandwichapp',
+    password: 'generalthings'
+  }
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
