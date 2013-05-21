@@ -8,5 +8,5 @@ describe Order do
 
   it { should respond_to(:user_id) }
   it { should respond_to(:cost) }
-    it { should have_many(:contents)}
+  it { should have_many(:contents)}
 end
