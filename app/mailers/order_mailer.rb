@@ -22,7 +22,7 @@ class OrderMailer < ActionMailer::Base
       '"Wisdom Comes From Experience, And Experience Comes From Lack Of Wisdom." - Terry Pratchett',
       (Typhoeus::Request.get("http://www.iheartquotes.com/api/v1/random")).body
     ]
-    
-    @array[rand(0..(@array.length-1))].to_s.html_safe
-  end
+    random = rand(0..(@array.length-1)).to_i
+    @array[random].to_s.html_safe
+  endhe
 end
