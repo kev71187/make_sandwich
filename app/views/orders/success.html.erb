@@ -2,7 +2,11 @@
 	<h1 id="element">
 		<!-- writeText goes here -->
 	</h1>
-	<canvas height="600" width="940" id="myCanvas"></canvas>
+	<div class="success_canvas">
+		<canvas height="600" width="940" class="img-circle" id="myCanvas"></canvas>
+		<%= image_tag "#{@order.sandwich.title}.jpg", id: "order_image", class: 'img-circle', width: 300  %>
+		<%= link_to 'Order another one!', new_order_path, class: "btn btn-primary" %>	
+	</div>	
 </div>
 <script type="text/javascript">
 	var writeText = "Your sandwich will be delivered soon!";

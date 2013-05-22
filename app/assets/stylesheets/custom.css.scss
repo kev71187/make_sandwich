@@ -29,6 +29,11 @@ textarea {
   }
 }
 
+.clear {
+  clear: both;
+  font-size: 1px;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -111,7 +116,18 @@ $grayMediumLight: #eaeaea;
 }
 
 /* miscellaneous */
-
+.pop {
+  border: 1px transparent solid;
+  border-radius: 3px;
+  
+  &:hover, &.active {
+    cursor: pointer;
+    border-color: $gray;
+    -webkit-box-shadow: 2px 2px 5px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    2px 2px 5px rgba(50, 50, 50, 0.75);
+    box-shadow:         2px 2px 5px rgba(50, 50, 50, 0.75);
+  }
+}
 .debug_dump {
   clear: both;
   float: left;

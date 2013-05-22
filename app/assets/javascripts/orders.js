@@ -63,7 +63,11 @@ function CanvasHelper() {
 			}
 		},
 
-		setCircle: function(color, x = self.randomNumber(941), y = self.randomNumber(600), size = self.randomNumber(200)) {
+		setCircle: function(color, x, y, size) {
+			x = x ? x : self.randomNumber(941);
+			y = y ? y : self.randomNumber(600);
+			size = size ? size : self.randomNumber(200);
+
 			self.ctx.beginPath();
 			self.ctx.fillStyle = color;
 			self.ctx.arc(x, y,size,0,Math.PI*2,true);
@@ -72,7 +76,7 @@ function CanvasHelper() {
 
 		setCircles: function () {
 			for (i=0; i < colors.length; i++) {
-				self.setCircle(colors[i])
+				self.setCircle(colors[i], 0, 0, 0)
 			}
 			
 			self.setCircle('#8AC007', self.center.x, self.center.y, 200);

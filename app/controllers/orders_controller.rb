@@ -27,7 +27,8 @@ class OrdersController < ApplicationController
   # GET /orders/new.json
   def new
     @order = Order.new
-
+    @sandwiches = Sandwich.all
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @order }
@@ -35,9 +36,9 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit
-    @order = Order.find(params[:id])
-  end
+  # def edit
+  #   @order = Order.find(params[:id])
+  # end
 
   # POST /orders
   # POST /orders.json
@@ -47,7 +48,8 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        OrderMailer.order_request(current_user, @order).deliver
+        #OrderMailer.order_request(current_user, @order).deliver
+        session[:order_session] = @order
         format.html { redirect_to success_orders_path }
         format.json { render json: @order, status: :created, location: @order }
       else
@@ -59,33 +61,37 @@ class OrdersController < ApplicationController
 
   # PUT /orders/1
   # PUT /orders/1.json
-  def update
-    @order = Order.find_by_id_and_user_id(params[:id], current_user)
+  # def update
+  #   @order = Order.find_by_id_and_user_id(params[:id], current_user)
 
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @order.update_attributes(params[:order])
+  #       format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: "edit" }
+  #       format.json { render json: @order.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /orders/1
   # DELETE /orders/1.json
-  def destroy
-    @order = Order.find_by_id_and_user_id(params[:id], current_user)
-    @order.destroy
+  # def destroy
+  #   @order = Order.find_by_id_and_user_id(params[:id], current_user)
+  #   @order.destroy
 
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { redirect_to orders_url }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   def success
-
+    @order = session[:order_session]
+    session[:order_session] = nil
+    unless @order
+      redirect_to error_orders_path
+    end
   end
 end
