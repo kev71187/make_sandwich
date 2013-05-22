@@ -24,5 +24,5 @@ class OrderMailer < ActionMailer::Base
     ]
     random = rand(0..(@array.length-1)).to_i
     @array[random].to_s.html_safe
-  endhe
+  end
 end

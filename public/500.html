@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+  <title>MakeSandwich</title>
+  <link href="/assets/application.css?body=1" media="all" rel="stylesheet" type="text/css" />
+<link href="/assets/custom.css?body=1" media="all" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/custom.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  <script src="/assets/orders.js?body=1" type="text/javascript"></script>
+  <link href="/assets/orders.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="fDjq2xCGzyQRq14mG7jiLSEHhkWr/wIXMTLBvx7Y7U4=" name="csrf-token" />
+  <!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
+</head>
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="/" id="logo">sandwich app</a>
+      <nav>
+        <ul class="nav pull-right">
+            <li><a href="/orders/new">New Order</a></li>
+            <li><a href="/orders">My Orders</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+  <div class="container">
+    <div class="error_page">
+  <h1>Shhh he is sleeping!</h1>
+  <p>
+    <img alt="Hamster" src="/assets/hamster.jpg" width="300" />
+  </p>
+  <p>
+    We are working on replacing the hamster running our servers. 
+  </p>
+  <p>
+    Please try to place your order again, and make sure you click on the sandwich you want.
+  </p>
+  <p>
+    <a href="/orders/new" class="btn btn-primary">New Order</a>
+  </p>
+</div>
+    <footer class="footer">
+  <small>
+    <a href="http://kevinwoods.net/">Rails Sandwich App</a>
+    by Kevin Woods
+  </small>
+  <nav>
+  </nav>
+</footer>
   </div>
 </body>
 </html>
