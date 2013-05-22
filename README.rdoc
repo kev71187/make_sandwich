@@ -1,6 +1,6 @@
 == Welcome to the Sandwich App
 
-View the app in production at: http://damp-dusk-2096.herokuapp.com/
+View the app in production at: http://hidden-ravine-7318.herokuapp.com
 
 == Getting Started
 	Create a user and then order a sandwich.
