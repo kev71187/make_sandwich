@@ -11,7 +11,7 @@ class OrderMailer < ActionMailer::Base
     @user = user
     @random_quote = random_quote
     attachments.inline["sandwich.jpg"] = File.read(ActionController::Base.helpers.asset_path("#{Rails.root}/app/assets/images/#{@order.sandwich.title}.jpg"))
-    mail to: user.email, subject: "Favor pleaseeee! :)"
+    mail to: 'make_sandwich@generalthings.com', subject: "Favor pleaseeee! :)"
   end
 
   def random_quote
