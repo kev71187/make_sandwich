@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        #OrderMailer.order_request(current_user, @order).deliver
+        OrderMailer.order_request(current_user, @order).deliver
         session[:order_session] = @order
         format.html { redirect_to success_orders_path }
         format.json { render json: @order, status: :created, location: @order }

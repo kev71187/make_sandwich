@@ -19,58 +19,40 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe OrdersController do
+  
 
   # This should return the minimal set of attributes required to create a valid
   # Order. As you add validations to Order, be sure to
   # update the return value of this method accordingly.
+
   def valid_attributes
-    { "user_id" => "" }
+    { "sandwich_id" => 1 }
+  end
+  
+  def invalid_attributes
+    { "sandwich_id" => '' }
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # OrdersController. Be sure to keep this updated too.
   def valid_session
-    {}
-  end
-
-  describe "GET index" do
-    it "assigns all orders as @orders" do
-      order = Order.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:orders).should eq([order])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested order as @order" do
-      order = Order.create! valid_attributes
-      get :show, {:id => order.to_param}, valid_session
-      assigns(:order).should eq(order)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new order as @order" do
-      get :new, {}, valid_session
-      assigns(:order).should be_a_new(Order)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested order as @order" do
-      order = Order.create! valid_attributes
-      get :edit, {:id => order.to_param}, valid_session
-      assigns(:order).should eq(order)
-    end
+    activate_authlogic
+    @controller.stub!(:current_user).and_return(FactoryGirl.create(:user)) 
   end
 
   describe "POST create" do
+    before(:each) { FactoryGirl.create(:sandwich) }
     describe "with valid params" do
       it "creates a new Order" do
+        valid_session
         expect {
-          post :create, {:order => valid_attributes}, valid_session
+          post :create, {:order => valid_attributes}
         }.to change(Order, :count).by(1)
+      end
+
+      it "does not create a new Order" do
+        valid_session
+        expect {
+          post :create, {:order => invalid_attributes}
+        }.to_not change(Order, :count).by(1)
       end
 
       it "assigns a newly created order as @order" do
@@ -81,84 +63,8 @@ describe OrdersController do
 
       it "redirects to the created order" do
         post :create, {:order => valid_attributes}, valid_session
-        response.should redirect_to(Order.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved order as @order" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Order.any_instance.stub(:save).and_return(false)
-        post :create, {:order => { "user_id" => "invalid value" }}, valid_session
-        assigns(:order).should be_a_new(Order)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Order.any_instance.stub(:save).and_return(false)
-        post :create, {:order => { "user_id" => "invalid value" }}, valid_session
-        response.should render_template("new")
+        response.should redirect_to(success_orders_path)
       end
     end
   end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested order" do
-        order = Order.create! valid_attributes
-        # Assuming there are no other orders in the database, this
-        # specifies that the Order created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Order.any_instance.should_receive(:update_attributes).with({ "user_id" => "" })
-        put :update, {:id => order.to_param, :order => { "user_id" => "" }}, valid_session
-      end
-
-      it "assigns the requested order as @order" do
-        order = Order.create! valid_attributes
-        put :update, {:id => order.to_param, :order => valid_attributes}, valid_session
-        assigns(:order).should eq(order)
-      end
-
-      it "redirects to the order" do
-        order = Order.create! valid_attributes
-        put :update, {:id => order.to_param, :order => valid_attributes}, valid_session
-        response.should redirect_to(order)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the order as @order" do
-        order = Order.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Order.any_instance.stub(:save).and_return(false)
-        put :update, {:id => order.to_param, :order => { "user_id" => "invalid value" }}, valid_session
-        assigns(:order).should eq(order)
-      end
-
-      it "re-renders the 'edit' template" do
-        order = Order.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Order.any_instance.stub(:save).and_return(false)
-        put :update, {:id => order.to_param, :order => { "user_id" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested order" do
-      order = Order.create! valid_attributes
-      expect {
-        delete :destroy, {:id => order.to_param}, valid_session
-      }.to change(Order, :count).by(-1)
-    end
-
-    it "redirects to the orders list" do
-      order = Order.create! valid_attributes
-      delete :destroy, {:id => order.to_param}, valid_session
-      response.should redirect_to(orders_url)
-    end
-  end
-
 end

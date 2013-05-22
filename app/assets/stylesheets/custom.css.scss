@@ -63,9 +63,12 @@ p {
 
 
 /* header */
-
+.navbar-inner #logo {
+  float:left
+}
+  
 #logo {
-  float: left;
+  
   margin-right: 10px;
   font-size: 1.7em;
   color: $green;
@@ -75,7 +78,7 @@ p {
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: $grayMediumLight;
     text-decoration: none;
   }
 }

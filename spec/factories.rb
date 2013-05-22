@@ -5,23 +5,12 @@ FactoryGirl.define do
 		password_confirmation "test"
 	end
 
-	factory :category do
-		required 1
-		name 'Bread'
-	end
-
-	factory :ingredient do
-		category_id 1
-		name 'Wheat' 
-	end
-
-	factory :content do
-		order_id 1
-		ingredient_id 1
+	factory :sandwich do
+		title 'Vegan' 
 	end
 
 	factory :order do
 		user_id 1
-		cost 2
+		sandwich_id 1
 	end
 end

@@ -1,2 +1,16 @@
+<h1><%= link_to "sandwich app", root_path, id: 'logo' %></h1>
+<% if current_user %>
+	<h4><%= link_to 'Order a Sandwich', new_order_path, class: 'btn btn-primary btn-large' %></h4>
+<% else %>
+	<h4>You Must be Logged in to order a sandwich! <%= link_to 'Login', new_order_path, class: 'btn btn-primary' %>
+	</h4>	
+<% end %>
 
-<span>A product of: <span><%= link_to image_tag('gt_logo.jpg'), "http://generalthings.com/" %>
+<p>
+	A site for the non programmer types.
+</p>
+<p>
+Checkout the command line version of this app at: <%= link_to 'make_sandwich', 'https://github.com/generalthings/make_sandwich' %>
+<p>
+	A product of: <%= link_to image_tag('gt_logo.jpg'), "http://generalthings.com/" %>
+</p>

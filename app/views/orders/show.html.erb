@@ -1,12 +1,12 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <b>Sandwich:</b>
-  <%= @order.sandwich.title %>
-</p>
-<p>
-	<%= image_tag "#{@order.sandwich.title}.jpg"%>
-</p>
+<div class="order">
+	<p id="notice"><%= notice %></p>
+	<p>
+	  <b>Sandwich:</b>
+	  <%= @order.sandwich.title %>
+	</p>
+	<p>
+		<%= image_tag "#{@order.sandwich.title}.jpg", class: "img-circle" %>
+	</p>
 
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+	<%= link_to 'Back', orders_path %>
+</div>

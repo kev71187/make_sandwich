@@ -1,3 +1,5 @@
+<h1><%= link_to 'New Order', new_order_path, class: "btn btn-primary btn-large" %></h1>
+
 <h1>Listing orders</h1>
 
 <table>
@@ -12,11 +14,11 @@
   <tr>
     <td><%= order.id %></td>
     <td><%= order.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
-    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Show', order, class: 'btn btn-warning'  %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Order', new_order_path, class: "btn btn-primary" %>
+

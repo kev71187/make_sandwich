@@ -56,11 +56,18 @@ table, .field h4, .actions {
 	text-align: center;
 }
 
+table {
+	margin: 0 auto;
+}
+
 .actions {
 	margin-top: 20px;
 }
 
 .order {
+	p {
+		text-align: center;
+	}
 	width: 400px;
 	margin: 0 auto;
 }
